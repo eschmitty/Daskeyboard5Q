@@ -10,34 +10,34 @@ do
 		"client_id": "dV9SUNVImxRX99kb6bKdRfNaE",
 		"refresh_token": "6bbd002f441ad515fbbc738ef714cea6",
 		"grant_type": "refresh_token"
-		}' https://q.daskeyboard.com/oauth/1.4/token | cut -d\" -f4 >/home/eschmitt/DasKeyboard5Q/pricefeed/.token.tok
+		}' https://q.daskeyboard.com/oauth/1.4/token | cut -d\" -f4 > /home/eschmitt/Daskeyboard5Q/.token.tok
 	
-	token=$(cat /home/eschmitt/DasKeyboard5Q/pricefeed/.token.tok)
+	token=$(cat /home/eschmitt/Daskeyboard5Q/.token.tok)
 	
 	###Pull prices from CoinMarketCap API and store in pricefeed folder
 	
-	(for i in $(cat /home/eschmitt/DasKeyboard5Q/pricefeed/coinlist | egrep -v '\#')
+	(for i in $(cat /home/eschmitt/Daskeyboard5Q/coinlist | egrep -v '\#')
 	do
-	curl -s -s -X GET 'https://api.coinmarketcap.com/v2/ticker/'$i'/?structure=array' | grep change_24h | cut -d: -f2 | sed -e 's/ //g' -e 's/,//' > /home/eschmitt/DasKeyboard5Q/pricefeed/.$i; 
+	curl -s -s -X GET 'https://api.coinmarketcap.com/v2/ticker/'$i'/?structure=array' | grep change_24h | cut -d: -f2 | sed -e 's/ //g' -e 's/,//' > /home/eschmitt/Daskeyboard5Q/.$i; 
 	done)
 	
 	###Define 24h change value variables, create hundredth decimal place and remove decimal to create integer
 	
-	btc=$(cat /home/eschmitt/DasKeyboard5Q/pricefeed/.1 | bc -l | xargs printf "%.2f" | sed 's/\.//')
-	eth=$(cat /home/eschmitt/DasKeyboard5Q/pricefeed/.1027 | bc -l | xargs printf "%.2f" | sed 's/\.//')
-	ltc=$(cat /home/eschmitt/DasKeyboard5Q/pricefeed/.2 | bc -l | xargs printf "%.2f" | sed 's/\.//')
-	bch=$(cat /home/eschmitt/DasKeyboard5Q/pricefeed/.1831 | bc -l | xargs printf "%.2f" | sed 's/\.//')
-	xrp=$(cat /home/eschmitt/DasKeyboard5Q/pricefeed/.52 | bc -l | xargs printf "%.2f" | sed 's/\.//')
-	xlm=$(cat /home/eschmitt/DasKeyboard5Q/pricefeed/.512 | bc -l | xargs printf "%.2f" | sed 's/\.//')
-	ada=$(cat /home/eschmitt/DasKeyboard5Q/pricefeed/.2010 | bc -l | xargs printf "%.2f" | sed 's/\.//')
-	xmr=$(cat /home/eschmitt/DasKeyboard5Q/pricefeed/.328 | bc -l | xargs printf "%.2f" | sed 's/\.//')
-	burst=$(cat /home/eschmitt/DasKeyboard5Q/pricefeed/.573 | bc -l | xargs printf "%.2f" | sed 's/\.//')
+	btc=$(cat /home/eschmitt/Daskeyboard5Q/.1 | bc -l | xargs printf "%.2f" | sed 's/\.//')
+	eth=$(cat /home/eschmitt/Daskeyboard5Q/.1027 | bc -l | xargs printf "%.2f" | sed 's/\.//')
+	ltc=$(cat /home/eschmitt/Daskeyboard5Q/.2 | bc -l | xargs printf "%.2f" | sed 's/\.//')
+	bch=$(cat /home/eschmitt/Daskeyboard5Q/.1831 | bc -l | xargs printf "%.2f" | sed 's/\.//')
+	xrp=$(cat /home/eschmitt/Daskeyboard5Q/.52 | bc -l | xargs printf "%.2f" | sed 's/\.//')
+	xlm=$(cat /home/eschmitt/Daskeyboard5Q/.512 | bc -l | xargs printf "%.2f" | sed 's/\.//')
+	ada=$(cat /home/eschmitt/Daskeyboard5Q/.2010 | bc -l | xargs printf "%.2f" | sed 's/\.//')
+	xmr=$(cat /home/eschmitt/Daskeyboard5Q/.328 | bc -l | xargs printf "%.2f" | sed 's/\.//')
+	burst=$(cat /home/eschmitt/Daskeyboard5Q/.573 | bc -l | xargs printf "%.2f" | sed 's/\.//')
 	
 	###for each coin, send appropriate color code to API for current price change
 	
 	###BTC
 	###If BTC is 0 to 3.49%, send signal to set color green
-	if [ $btc -ge 0 ] && [ -a $btc -le 349 ]; then
+	if [ $btc -ge 0 ] && [ $btc -le 349 ]; then
 	curl -s -H "Content-Type: application/json" -H "Authorization: Bearer $token" -X POST https://q.daskeyboard.com/api/1.0/signals -d '{
 		"name": "BTC +",
 		"pid": "DK5QPID",
@@ -610,5 +610,7 @@ do
 		"isMuted": true}';
 	fi
 printf "\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n"
-sleep 30
+
+##Waits 60 seconds before looping and starting over
+sleep 60
 done
