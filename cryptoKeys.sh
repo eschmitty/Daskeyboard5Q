@@ -16,22 +16,22 @@ do
 	
 	###Pull prices from CoinMarketCap API and store in files
 	
-	(for i in $(/home/eschmitt/Daskeyboard5Q/coinlist < grep -E -v '\#')
+	(for i in $(cat /home/eschmitt/Daskeyboard5Q/coinlist | grep -E -v '\#')
 	do
 	curl -s -X GET "https://api.coinmarketcap.com/v2/ticker/$i/?structure=array" | grep change_24h | cut -d: -f2 | sed -e 's/ //g' -e 's/,//' > /home/eschmitt/Daskeyboard5Q/."$i"; 
 	done)
 	
 	###Define 24h change value variables, create hundredth decimal place and remove decimal to create integer
 	
-	btc=$(/home/eschmitt/Daskeyboard5Q/.1 < bc -l | xargs printf "%.2f" | sed 's/\.//')
-	eth=$(/home/eschmitt/Daskeyboard5Q/.1027 < bc -l | xargs printf "%.2f" | sed 's/\.//')
-	ltc=$(/home/eschmitt/Daskeyboard5Q/.2 < bc -l | xargs printf "%.2f" | sed 's/\.//')
-	bch=$(/home/eschmitt/Daskeyboard5Q/.1831 < bc -l | xargs printf "%.2f" | sed 's/\.//')
-	xrp=$(/home/eschmitt/Daskeyboard5Q/.52 < bc -l | xargs printf "%.2f" | sed 's/\.//')
-	xlm=$(/home/eschmitt/Daskeyboard5Q/.512 < bc -l | xargs printf "%.2f" | sed 's/\.//')
-	ada=$(/home/eschmitt/Daskeyboard5Q/.2010 < bc -l | xargs printf "%.2f" | sed 's/\.//')
-	xmr=$(/home/eschmitt/Daskeyboard5Q/.328 < bc -l | xargs printf "%.2f" | sed 's/\.//')
-	burst=$(/home/eschmitt/Daskeyboard5Q/.573 < bc -l | xargs printf "%.2f" | sed 's/\.//')
+	btc=$(cat /home/eschmitt/Daskeyboard5Q/.1 | bc -l | xargs printf "%.2f" | sed 's/\.//')
+	eth=$(cat /home/eschmitt/Daskeyboard5Q/.1027 | bc -l | xargs printf "%.2f" | sed 's/\.//')
+	ltc=$(cat /home/eschmitt/Daskeyboard5Q/.2 | bc -l | xargs printf "%.2f" | sed 's/\.//')
+	bch=$(cat /home/eschmitt/Daskeyboard5Q/.1831 | bc -l | xargs printf "%.2f" | sed 's/\.//')
+	xrp=$(cat /home/eschmitt/Daskeyboard5Q/.52 | bc -l | xargs printf "%.2f" | sed 's/\.//')
+	xlm=$(cat /home/eschmitt/Daskeyboard5Q/.512 | bc -l | xargs printf "%.2f" | sed 's/\.//')
+	ada=$(cat /home/eschmitt/Daskeyboard5Q/.2010 | bc -l | xargs printf "%.2f" | sed 's/\.//')
+	xmr=$(cat /home/eschmitt/Daskeyboard5Q/.328 | bc -l | xargs printf "%.2f" | sed 's/\.//')
+	burst=$(cat /home/eschmitt/Daskeyboard5Q/.573 | bc -l | xargs printf "%.2f" | sed 's/\.//')
 	
 	###for each coin, send appropriate color code to API for current price change
 	
