@@ -61,7 +61,7 @@ do
 		"isRead": true,
 		"isMuted": true}';
 	###If BTC is >+8%, send signal to color cycle
-	elif [ $btc -ge 800 ] && [ [ $btcstatus -ne 3 ]; then
+	elif [ $btc -ge 800 ] && [ $btcstatus -ne 3 ]; then
 	curl -s -H "Content-Type: application/json" -H "Authorization: Bearer $token" -X POST https://q.daskeyboard.com/api/1.0/signals -d '{
 		"name": "BTC +",
 		"pid": "DK5QPID",
