@@ -18,7 +18,7 @@ do
 	
 	(for i in $(cat /home/eschmitt/Daskeyboard5Q/coinlist | egrep -v '\#')
 	do
-	curl -s -s -X GET 'https://api.coinmarketcap.com/v2/ticker/'$i'/?structure=array' | grep change_24h | cut -d: -f2 | sed -e 's/ //g' -e 's/,//' > /home/eschmitt/Daskeyboard5Q/.$i; 
+	curl -s -X GET 'https://api.coinmarketcap.com/v2/ticker/'$i'/?structure=array' | grep change_24h | cut -d: -f2 | sed -e 's/ //g' -e 's/,//' > /home/eschmitt/Daskeyboard5Q/.$i; 
 	done)
 	
 	###Define 24h change value variables, create hundredth decimal place and remove decimal to create integer
