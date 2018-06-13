@@ -14,7 +14,7 @@ do
 	
 	token=$(cat /home/eschmitt/Daskeyboard5Q/.token.tok)
 	
-	###Pull prices from CoinMarketCap API and store in pricefeed folder
+	###Pull prices from CoinMarketCap API and store in files
 	
 	(for i in $(cat /home/eschmitt/Daskeyboard5Q/coinlist | egrep -v '\#')
 	do
