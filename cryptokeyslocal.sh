@@ -1,7 +1,5 @@
 #!/bin/bash
 
-#set -x
-
 ##Initially defines key color status variables
 btcstat=0
 ethstat=0
@@ -21,7 +19,7 @@ do
 		PORT=27301
 		URL="http://localhost:$PORT/api/1.0/signals"
 		
-        ###Pull 24 hour price change from coinmarketcap.com API, create hundredth decimal place, remove decimal to create integer and define variables for each coin. 
+        ###Define 24h change value variables, create hundredth decimal place and remove decimal to create integer
 
 		BTC=1
 		ETH=1027
@@ -58,7 +56,7 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' && let btcstat=1;
+				}' && (( btcstat=1 ));
         ###If BTC is +3.5 to 7.99%, send signal to blink color green
         elif [ "$btc" -ge 350 ] && [ "$btc" -le 799 ] && [ "$btcstat" -ne 2 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
@@ -71,7 +69,7 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' && let btcstat=2;
+				}' && (( btcstat=2 ));
         ###If BTC is >+8%, send signal to color cycle
         elif [ "$btc" -ge 800 ] && [ "$btcstat" -ne 3 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
@@ -84,7 +82,7 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' && let btcstat=3;
+				}' && (( btcstat=3 ));
         ###If BTC is <0 to -3.49%, send signal to set color red
         elif [ "$btc" -lt 0 ] && [ "$btc" -ge -349 ] && [ "$btcstat" -ne 4 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
@@ -97,7 +95,7 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' && let btcstat=4;
+				}' && (( btcstat=4 ));
         ###If BTC is <-3.5%, send signal to blink color red
         elif [ "$btc" -le -350 ] && [ "$btcstat" -ne 5 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
@@ -110,9 +108,9 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' && let btcstat=5;
+				}' && (( btcstat=5 ));
         fi
-        printf "\n"
+        
 
         ###ETH
         ###If ETH is 0 to 3.49%, send signal to set color green
@@ -127,7 +125,7 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' && let ethstat=1;
+				}' && (( ethstat=1 ));
         ###If ETH is +3.5 to 7.99%, send signal to blink color green
         elif [ "$eth" -ge 350 ] && [ "$eth" -le 799 ] && [ "$ethstat" -ne 2 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
@@ -140,7 +138,7 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' && let ethstat=2;
+				}' && (( ethstat=2 ));
         ###If ETH is >+8%, send signal to color cycle
         elif [ "$eth" -ge 800 ] && [ "$ethstat" -ne 3 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
@@ -153,7 +151,7 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' && let ethstat=3;
+				}' && (( ethstat=3 ));
         ###If ETH is <0 to -3.49%, send signal to set color red
         elif [ "$eth" -lt 0 ] && [ "$eth" -ge -349 ] && [ "$ethstat" -ne 4 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
@@ -166,7 +164,7 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' && let ethstat=4;
+				}' && (( ethstat=4 ));
         ###If ETH is <-3.5%, send signal to blink color red
         elif [ "$eth" -le -350 ] && [ "$ethstat" -ne 5 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
@@ -179,9 +177,9 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' && let ethstat=5;
+				}' && (( ethstat=5 ));
         fi
-        printf "\n"
+        
 
         ###LTC
         ###If LTC is 0 to 3.49%, send signal to set color green
@@ -196,7 +194,7 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' && let ltcstat=1;
+				}' && (( ltcstat=1 ));
         ###If LTC is +3.5 to 7.99%, send signal to blink color green
         elif [ "$ltc" -ge 350 ] && [ "$ltc" -le 799 ] && [ "$ltcstat" -ne 2 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
@@ -209,7 +207,7 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' && let ltcstat=2;
+				}' && (( ltcstat=2 ));
         ###If LTC is >+8%, send signal to color cycle
         elif [ "$ltc" -ge 800 ] && [ "$ltcstat" -ne 3 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
@@ -222,7 +220,7 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' && let ltcstat=3;
+				}' && (( ltcstat=3 ));
         ###If LTC is <0 to -3.49%, send signal to set color red
         elif [ "$ltc" -lt 0 ] && [ "$ltc" -ge -349 ] && [ "$ltcstat" -ne 4 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
@@ -235,7 +233,7 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' && let ltcstat=4;
+				}' && (( ltcstat=4 ));
         ###If LTC is <-3.5%, send signal to blink color red
         elif [ "$ltc" -le -350 ] && [ "$ltcstat" -ne 5 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
@@ -248,9 +246,9 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' && let ltcstat=5;
+				}' && (( ltcstat=5 ));
         fi
-        printf "\n"
+        
 
         ##BCH
         ###If BCH is 0 to 3.49%, send signal to set color green
@@ -265,7 +263,7 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' && let bchstat=1;
+				}' && (( bchstat=1 ));
         ###If BCH is +3.5 to 7.99%, send signal to blink color green
         elif [ "$bch" -ge 350 ] && [ "$bch" -le 799 ] && [ "$bchstat" -ne 2 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
@@ -278,7 +276,7 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' && let bchstat=2;
+				}' && (( bchstat=2 ));
         ###If BCH is >+8%, send signal to color cycle
         elif [ "$bch" -ge 800 ] && [ "$bchstat" -ne 3 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
@@ -291,7 +289,7 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' && let bchstat=3;
+				}' && (( bchstat=3 ));
         ###If BCH is <0 to -3.49%, send signal to set color red
         elif [ "$bch" -lt 0 ] && [ "$bch" -ge -349 ] && [ "$bchstat" -ne 4 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
@@ -304,7 +302,7 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' && let bchstat=4;
+				}' && (( bchstat=4 ));
         ###If BCH is <-3.5%, send signal to blink color red
         elif [ "$bch" -le -350 ] && [ "$bchstat" -ne 5 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
@@ -317,9 +315,9 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' && let bchstat=5;
+				}' && (( bchstat=5 ));
         fi
-        printf "\n"
+        
 
         ###XRP
         ###If XRP is 0 to 3.49%, send signal to set color green
@@ -334,7 +332,7 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' && let xrpstat=1;
+				}' && (( xrpstat=1 ));
         ###If XRP is +3.5 to 7.99%, send signal to blink color green
         elif [ "$xrp" -ge 350 ] && [ "$xrp" -le 799 ] && [ "$xrpstat" -ne 2 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
@@ -347,7 +345,7 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' && let xrpstat=2;
+				}' && (( xrpstat=2 ));
         ###If XRP is >+8%, send signal to color cycle
         elif [ "$xrp" -ge 800 ] && [ "$xrpstat" -ne 3 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
@@ -360,7 +358,7 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' && let xrpstat=3;
+				}' && (( xrpstat=3 ));
         ###If XRP is <0 to -3.49%, send signal to set color red
         elif [ "$xrp" -lt 0 ] && [ "$xrp" -ge -349 ] && [ "$xrpstat" -ne 4 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
@@ -373,7 +371,7 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' && let xrpstat=4;
+				}' && (( xrpstat=4 ));
         ###If XRP is <-3.5%, send signal to blink color red
         elif [ "$xrp" -le -350 ] && [ "$xrpstat" -ne 5 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
@@ -386,9 +384,9 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' && let xrpstat=5;
+				}' && (( xrpstat=5 ));
         fi
-        printf "\n"
+        
 
         ###XMR
         ###If XMR is 0 to 3.49%, send signal to set color green
@@ -403,7 +401,7 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' && let xmrstat=1;
+				}' && (( xmrstat=1 ));
         ###If XMR is +3.5 to 7.99%, send signal to blink color green
         elif [ "$xmr" -ge 350 ] && [ "$xmr" -le 799 ] && [ "$xmrstat" -ne 2 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
@@ -416,7 +414,7 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' && let xmrstat=2;
+				}' && (( xmrstat=2 ));
         ###If XMR is >+8%, send signal to color cycle
         elif [ "$xmr" -ge 800 ] && [ "$xmrstat" -ne 3 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
@@ -429,7 +427,7 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' && let xmrstat=3;
+				}' && (( xmrstat=3 ));
         ###If XMR is <0 to -3.49%, send signal to set color red
         elif [ "$xmr" -lt 0 ] && [ "$xmr" -ge -349 ] && [ "$xmrstat" -ne 4 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
@@ -442,7 +440,7 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' && let xmrstat=4;
+				}' && (( xmrstat=4 ));
         ###If XMR is <-3.5%, send signal to blink color red
         elif [ "$xmr" -le -350 ] && [ "$xmrstat" -ne 5 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
@@ -455,9 +453,9 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' && let xmrstat=5;
+				}' && (( xmrstat=5 ));
         fi
-        printf "\n"
+        
 
         ###ADA
         ###If ADA is 0 to 3.49%, send signal to set color green
@@ -472,7 +470,7 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' && let adastat=1;
+				}' && (( adastat=1 ));
         ###If ADA is +3.5 to 7.99%, send signal to blink color green
         elif [ "$ada" -ge 350 ] && [ "$ada" -le 799 ] && [ "$adastat" -ne 2 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
@@ -485,7 +483,7 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' && let adastat=2;
+				}' && (( adastat=2 ));
         ###If ADA is >+8%, send signal to color cycle
         elif [ "$ada" -ge 800 ] && [ "$adastat" -ne 3 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
@@ -498,7 +496,7 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' && let adastat=3;
+				}' && (( adastat=3 ));
         ###If ADA is <0 to -3.49%, send signal to set color red
         elif [ "$ada" -lt 0 ] && [ "$ada" -ge -349 ] && [ "$adastat" -ne 4 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
@@ -511,7 +509,7 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' && let adastat=4;
+				}' && (( adastat=4 ));
         ###If ADA is <-3.5%, send signal to blink color red
         elif [ "$ada" -le -350 ] && [ "$adastat" -ne 5 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
@@ -524,9 +522,9 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' && let adastat=5;
+				}' && (( adastat=5 ));
         fi
-        printf "\n"
+        
 
         ###XLM
         ###If XLM is 0 to 3.49%, send signal to set color green
@@ -541,7 +539,7 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' && let xlmstat=1;
+				}' && (( xlmstat=1 ));
         ###If XLM is +3.5 to 7.99%, send signal to blink color green
         elif [ "$xlm" -ge 350 ] && [ "$xlm" -le 799 ] && [ "$xlmstat" -ne 2 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
@@ -554,7 +552,7 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' && let xlmstat=2;
+				}' && (( xlmstat=2 ));
         ###If XLM is >+8%, send signal to color cycle
         elif [ "$xlm" -ge 800 ] && [ "$xlmstat" -ne 3 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
@@ -567,7 +565,7 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' && let xlmstat=3;
+				}' && (( xlmstat=3 ));
         ###If XLM is <0 to -3.49%, send signal to set color red
         elif [ "$xlm" -lt 0 ] && [ "$xlm" -ge -349 ] && [ "$xlmstat" -ne 4 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
@@ -580,7 +578,7 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' && let xlmstat=4;
+				}' && (( xlmstat=4 ));
         ###If XLM is <-3.5%, send signal to blink color red
         elif [ "$xlm" -le -350 ] && [ "$xlmstat" -ne 5 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
@@ -593,9 +591,9 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' && let xlmstat=5;
+				}' && (( xlmstat=5 ));
         fi
-        printf "\n"
+        
 
         ###BURST
         ###If BURST is 0 to 3.49%, send signal to set color green
@@ -610,7 +608,7 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' && let burststat=1;
+				}' && (( burststat=1 ));
         ###If BURST is +3.5 to 7.99%, send signal to blink color green
         elif [ "$burst" -ge 350 ] && [ "$burst" -le 799 ] && [ "$burststat" -ne 2 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
@@ -623,7 +621,7 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' && let burststat=2;
+				}' && (( burststat=2 ));
         ###If BURST is >+8%, send signal to color cycle
         elif [ "$burst" -ge 800 ] && [ "$burststat" -ne 3 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
@@ -636,7 +634,7 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' && let burststat=3;
+				}' && (( burststat=3 ));
         ###If BURST is <0 to -3.49%, send signal to set color red
         elif [ "$burst" -lt 0 ] && [ "$burst" -ge -349 ] && [ "$burststat" -ne 4 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
@@ -649,7 +647,7 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' && let burststat=4;
+				}' && (( burststat=4 ));
         ###If BURST is <-3.5%, send signal to blink color red
         elif [ "$burst" -le -350 ] && [ "$burststat" -ne 5 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
@@ -662,10 +660,10 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' && let burststat=5;
+				}' && (( burststat=5 ));
         fi
-printf "\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n"
 
 ##Waits 10 seconds before looping and starting over
 sleep 10
+
 done
