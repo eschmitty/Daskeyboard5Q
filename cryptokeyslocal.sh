@@ -16,27 +16,12 @@ burststat=0
 ##Sets infinite loop (CTRL+C to stop)
 while :
 do
-         ###Send API refresh token, create file with granted access token (.token.tok) and define $token variable
-#        curl -s -X POST -H "Content-Type: application/json" -d '{
-#                "client_id": "dV9SUNVImxRX99kb6bKdRfNaE",
-#                "refresh_token": "6bbd002f441ad515fbbc738ef714cea6",
-#                "grant_type": "refresh_token"
-#                }' https://q.daskeyboard.com/oauth/1.4/token | cut -d\" -f4 > /home/eschmitt/DasKeyboard5Q/Daskeyboard5Q.token.tok
-#
-#        token=$(cat /home/eschmitt/DasKeyboard5Q/Daskeyboard5Q.token.tok)
-#
-        ###Pull prices from CoinMarketCap API and store in files
-#
-#        (for i in $(cat /home/eschmitt/DasKeyboard5Q/Daskeyboard5Q/coinlist | grep -E -v '\#')
-#        do
-#        curl -s -X GET "https://api.coinmarketcap.com/v2/ticker/$i/?structure=array" | grep change_24h | cut -d: -f2 | sed -e 's/ //g' -e 's/,//' > /home/eschmitt/DasKeyboard5Q/Daskeyboard5Q."$i";
-#        done)
 
 		###Define public API URL
 		PORT=27301
 		URL="http://localhost:$PORT/api/1.0/signals"
 		
-        ###Define 24h change value variables, create hundredth decimal place and remove decimal to create integer
+        ###Pull 24 hour price change from coinmarketcap.com API, create hundredth decimal place, remove decimal to create integer and define variables for each coin. 
 
 		BTC=1
 		ETH=1027
