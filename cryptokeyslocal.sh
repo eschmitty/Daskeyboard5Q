@@ -1,5 +1,31 @@
 #!/bin/bash
 
+############################################################################################
+############################################################################################
+##                                                                                        ##
+## This script changes the colors of the numpad keys according to the 24 hour change      ##
+## price of various cryptocurrencies. The price change is pulled from coinmarketcap.com's ##
+## API and the correct color and effect is sent to the keyboard API                       ##
+##                                                                                        ##
+##                          +0-3.49% - Set color green                                    ##
+##                          +3.5-7.99% - Blink green                                      ##
+##                          +8+% - Color cycle                                            ##
+##                          -.1-3.49% - Set color red                                     ##
+##                          -3.5-% - Blink red                                            ##
+##                                                                                        ##
+##                          1 key = Bitcoin                                               ##
+##                          2 key = Ethereum                                              ##
+##                          3 key = Litecoin                                              ##
+##                          4 key = BitcoinCash                                           ##
+##                          5 key = Ripple                                                ##
+##                          6 key = Monero                                                ##
+##                          7 key = Cardano                                               ##
+##                          8 key = Stellar Lumens                                        ##
+##                          9 key = Burst                                                 ##
+##                                                                                        ##
+############################################################################################
+############################################################################################
+
 ##Initially defines key color status variables
 btcstat=0
 ethstat=0
