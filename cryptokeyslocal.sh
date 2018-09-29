@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ############################################################################################
-ZZ############################################################################################
+############################################################################################
 ##                                                                                        ##
 ## This script changes the colors of the numpad keys according to the 24 hour change      ##
 ## price of various cryptocurrencies. The price change is pulled from coinmarketcap.com's ##
@@ -63,7 +63,7 @@ do
         bch=$(curl -s -X GET "https://api.coinmarketcap.com/v2/ticker/$BCH/?structure=array" | grep change_24h | cut -d: -f2 | sed -e 's/ //g' -e 's/,//' | bc -l | xargs printf "%.2f" | sed 's/\.//')
         xrp=$(curl -s -X GET "https://api.coinmarketcap.com/v2/ticker/$XRP/?structure=array" | grep change_24h | cut -d: -f2 | sed -e 's/ //g' -e 's/,//' | bc -l | xargs printf "%.2f" | sed 's/\.//')
         xlm=$(curl -s -X GET "https://api.coinmarketcap.com/v2/ticker/$XLM/?structure=array" | grep change_24h | cut -d: -f2 | sed -e 's/ //g' -e 's/,//' | bc -l | xargs printf "%.2f" | sed 's/\.//')
-        loki=$(curl -s -X GET "https://api.coinmarketcap.com/v2/ticker/$ADA/?structure=array" | grep change_24h | cut -d: -f2 | sed -e 's/ //g' -e 's/,//' | bc -l | xargs printf "%.2f" | sed 's/\.//')
+        loki=$(curl -s -X GET "https://api.coinmarketcap.com/v2/ticker/$LOKI/?structure=array" | grep change_24h | cut -d: -f2 | sed -e 's/ //g' -e 's/,//' | bc -l | xargs printf "%.2f" | sed 's/\.//')
         xmr=$(curl -s -X GET "https://api.coinmarketcap.com/v2/ticker/$XMR/?structure=array" | grep change_24h | cut -d: -f2 | sed -e 's/ //g' -e 's/,//' | bc -l | xargs printf "%.2f" | sed 's/\.//')
         burst=$(curl -s -X GET "https://api.coinmarketcap.com/v2/ticker/$BURST/?structure=array" | grep change_24h | cut -d: -f2 | sed -e 's/ //g' -e 's/,//' | bc -l | xargs printf "%.2f" | sed 's/\.//')
 
