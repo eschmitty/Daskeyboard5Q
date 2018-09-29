@@ -45,7 +45,7 @@ do
 		PORT=27301
 		URL="http://localhost:$PORT/api/1.0/signals"
 		
-        ###Define 24h change value variables, create hundredth decimal place and remove decimal to create integer
+##Define coinmarketcap API coin identifier integers. For each coin, coinmarketcap assigns an integer for API calls, this must be defined here.		
 
 		ONE=1
 		TWO=1027
@@ -57,6 +57,8 @@ do
 		EIGHT=328
 		NINE=573
 		
+  ###Define 24h change value variables, create hundredth decimal place and remove decimal to create integer
+  
         one=$(curl -s -X GET "https://api.coinmarketcap.com/v2/ticker/$ONE/?structure=array" | grep change_24h | cut -d: -f2 | sed -e 's/ //g' -e 's/,//' | bc -l | xargs printf "%.2f" | sed 's/\.//')
         two=$(curl -s -X GET "https://api.coinmarketcap.com/v2/ticker/$TWO/?structure=array" | grep change_24h | cut -d: -f2 | sed -e 's/ //g' -e 's/,//' | bc -l | xargs printf "%.2f" | sed 's/\.//')
         three=$(curl -s -X GET "https://api.coinmarketcap.com/v2/ticker/$THREE/?structure=array" | grep change_24h | cut -d: -f2 | sed -e 's/ //g' -e 's/,//' | bc -l | xargs printf "%.2f" | sed 's/\.//')
