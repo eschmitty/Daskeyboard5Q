@@ -19,7 +19,7 @@
 ##                          4 key = BitcoinCash                                           ##
 ##                          5 key = Ripple                                                ##
 ##                          6 key = Monero                                                ##
-##                          7 key = LOKI                                                  ##
+##                          7 key = Loki                                                  ##
 ##                          8 key = Stellar Lumens                                        ##
 ##                          9 key = Burst                                                 ##
 ##                                                                                        ##
@@ -27,15 +27,15 @@
 ############################################################################################
 
 ##Initially defines key color status variables
-btcstat=0
-ethstat=0
-ltcstat=0
-bchstat=0
-xrpstat=0
-xlmstat=0
-lokistat=0
-xmrstat=0
-burststat=0
+onestat=0
+twostat=0
+threestat=0
+fourstat=0
+fivestat=0
+eightstat=0
+sevenstat=0
+sixstat=0
+ninestat=0
 
 ##Sets infinite loop (CTRL+C to stop)
 while :
@@ -47,33 +47,33 @@ do
 		
         ###Define 24h change value variables, create hundredth decimal place and remove decimal to create integer
 
-		BTC=1
-		ETH=1027
-		LTC=2
-		BCH=1831
-		XRP=52
-		XLM=512
-		LOKI=2748
-		XMR=328
-		BURST=573
+		ONE=1
+		TWO=1027
+		THREE=2
+		FOUR=1831
+		FIVE=52
+		SIX=512
+		SEVEN=2748
+		EIGHT=328
+		NINE=573
 		
-        btc=$(curl -s -X GET "https://api.coinmarketcap.com/v2/ticker/$BTC/?structure=array" | grep change_24h | cut -d: -f2 | sed -e 's/ //g' -e 's/,//' | bc -l | xargs printf "%.2f" | sed 's/\.//')
-        eth=$(curl -s -X GET "https://api.coinmarketcap.com/v2/ticker/$ETH/?structure=array" | grep change_24h | cut -d: -f2 | sed -e 's/ //g' -e 's/,//' | bc -l | xargs printf "%.2f" | sed 's/\.//')
-        ltc=$(curl -s -X GET "https://api.coinmarketcap.com/v2/ticker/$LTC/?structure=array" | grep change_24h | cut -d: -f2 | sed -e 's/ //g' -e 's/,//' | bc -l | xargs printf "%.2f" | sed 's/\.//')
-        bch=$(curl -s -X GET "https://api.coinmarketcap.com/v2/ticker/$BCH/?structure=array" | grep change_24h | cut -d: -f2 | sed -e 's/ //g' -e 's/,//' | bc -l | xargs printf "%.2f" | sed 's/\.//')
-        xrp=$(curl -s -X GET "https://api.coinmarketcap.com/v2/ticker/$XRP/?structure=array" | grep change_24h | cut -d: -f2 | sed -e 's/ //g' -e 's/,//' | bc -l | xargs printf "%.2f" | sed 's/\.//')
-        xlm=$(curl -s -X GET "https://api.coinmarketcap.com/v2/ticker/$XLM/?structure=array" | grep change_24h | cut -d: -f2 | sed -e 's/ //g' -e 's/,//' | bc -l | xargs printf "%.2f" | sed 's/\.//')
-        loki=$(curl -s -X GET "https://api.coinmarketcap.com/v2/ticker/$LOKI/?structure=array" | grep change_24h | cut -d: -f2 | sed -e 's/ //g' -e 's/,//' | bc -l | xargs printf "%.2f" | sed 's/\.//')
-        xmr=$(curl -s -X GET "https://api.coinmarketcap.com/v2/ticker/$XMR/?structure=array" | grep change_24h | cut -d: -f2 | sed -e 's/ //g' -e 's/,//' | bc -l | xargs printf "%.2f" | sed 's/\.//')
-        burst=$(curl -s -X GET "https://api.coinmarketcap.com/v2/ticker/$BURST/?structure=array" | grep change_24h | cut -d: -f2 | sed -e 's/ //g' -e 's/,//' | bc -l | xargs printf "%.2f" | sed 's/\.//')
+        one=$(curl -s -X GET "https://api.coinmarketcap.com/v2/ticker/$ONE/?structure=array" | grep change_24h | cut -d: -f2 | sed -e 's/ //g' -e 's/,//' | bc -l | xargs printf "%.2f" | sed 's/\.//')
+        two=$(curl -s -X GET "https://api.coinmarketcap.com/v2/ticker/$TWO/?structure=array" | grep change_24h | cut -d: -f2 | sed -e 's/ //g' -e 's/,//' | bc -l | xargs printf "%.2f" | sed 's/\.//')
+        three=$(curl -s -X GET "https://api.coinmarketcap.com/v2/ticker/$THREE/?structure=array" | grep change_24h | cut -d: -f2 | sed -e 's/ //g' -e 's/,//' | bc -l | xargs printf "%.2f" | sed 's/\.//')
+        four=$(curl -s -X GET "https://api.coinmarketcap.com/v2/ticker/$FOUR/?structure=array" | grep change_24h | cut -d: -f2 | sed -e 's/ //g' -e 's/,//' | bc -l | xargs printf "%.2f" | sed 's/\.//')
+        five=$(curl -s -X GET "https://api.coinmarketcap.com/v2/ticker/$FIVE/?structure=array" | grep change_24h | cut -d: -f2 | sed -e 's/ //g' -e 's/,//' | bc -l | xargs printf "%.2f" | sed 's/\.//')
+        eight=$(curl -s -X GET "https://api.coinmarketcap.com/v2/ticker/$SIX/?structure=array" | grep change_24h | cut -d: -f2 | sed -e 's/ //g' -e 's/,//' | bc -l | xargs printf "%.2f" | sed 's/\.//')
+        seven=$(curl -s -X GET "https://api.coinmarketcap.com/v2/ticker/$SEVEN/?structure=array" | grep change_24h | cut -d: -f2 | sed -e 's/ //g' -e 's/,//' | bc -l | xargs printf "%.2f" | sed 's/\.//')
+        six=$(curl -s -X GET "https://api.coinmarketcap.com/v2/ticker/$EIGHT/?structure=array" | grep change_24h | cut -d: -f2 | sed -e 's/ //g' -e 's/,//' | bc -l | xargs printf "%.2f" | sed 's/\.//')
+        nine=$(curl -s -X GET "https://api.coinmarketcap.com/v2/ticker/$NINE/?structure=array" | grep change_24h | cut -d: -f2 | sed -e 's/ //g' -e 's/,//' | bc -l | xargs printf "%.2f" | sed 's/\.//')
 
         ###for each coin, send appropriate color code to API for current price change
 
-        ###BTC
-        ###If BTC is 0 to 3.49%, send signal to set color green
-        if [ "$btc" -ge 0 ] && [ "$btc" -le 349 ] && [ "$btcstat" -ne 1 ]; then
+        ###ONE
+        ###If ONE is 0 to 3.49%, send signal to set color green
+        if [ "$one" -ge 0 ] && [ "$one" -le 349 ] && [ "$onestat" -ne 1 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-                "name": "BTC +",
+                "name": "ONE +",
                 "pid": "DK5QPID",
                 "zoneId": "19,4",
                 "effect": "SET_COLOR",
@@ -82,11 +82,11 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' &> /dev/null && (( btcstat=1 ));
-        ###If BTC is +3.5 to 7.99%, send signal to blink color green
-        elif [ "$btc" -ge 350 ] && [ "$btc" -le 799 ] && [ "$btcstat" -ne 2 ]; then
+				}' &> /dev/null && (( onestat=1 ));
+        ###If ONE is +3.5 to 7.99%, send signal to blink color green
+        elif [ "$one" -ge 350 ] && [ "$one" -le 799 ] && [ "$onestat" -ne 2 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-                "name": "BTC +",
+                "name": "ONE +",
                 "pid": "DK5QPID",
                 "zoneId": "19,4",
                 "color": "#00FF00",
@@ -95,11 +95,11 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' &> /dev/null && (( btcstat=2 ));
-        ###If BTC is >+8%, send signal to color cycle
-        elif [ "$btc" -ge 800 ] && [ "$btcstat" -ne 3 ]; then
+				}' &> /dev/null && (( onestat=2 ));
+        ###If ONE is >+8%, send signal to color cycle
+        elif [ "$one" -ge 800 ] && [ "$onestat" -ne 3 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-                "name": "BTC +",
+                "name": "ONE +",
                 "pid": "DK5QPID",
                 "zoneId": "19,4",
                 "color": "#00FF00",
@@ -108,11 +108,11 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' &> /dev/null && (( btcstat=3 ));
-        ###If BTC is <0 to -3.49%, send signal to set color red
-        elif [ "$btc" -lt 0 ] && [ "$btc" -ge -349 ] && [ "$btcstat" -ne 4 ]; then
+				}' &> /dev/null && (( onestat=3 ));
+        ###If ONE is <0 to -3.49%, send signal to set color red
+        elif [ "$one" -lt 0 ] && [ "$one" -ge -349 ] && [ "$onestat" -ne 4 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-                "name": "BTC -",
+                "name": "ONE -",
                 "pid": "DK5QPID",
                 "zoneId": "19,4",
                 "effect": "SET_COLOR",
@@ -121,11 +121,11 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' &> /dev/null && (( btcstat=4 ));
-        ###If BTC is <-3.5%, send signal to blink color red
-        elif [ "$btc" -le -350 ] && [ "$btcstat" -ne 5 ]; then
+				}' &> /dev/null && (( onestat=4 ));
+        ###If ONE is <-3.5%, send signal to blink color red
+        elif [ "$one" -le -350 ] && [ "$onestat" -ne 5 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-                "name": "BTC -",
+                "name": "ONE -",
                 "pid": "DK5QPID",
                 "zoneId": "19,4",
                 "color": "#FF0000",
@@ -134,15 +134,15 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' &> /dev/null && (( btcstat=5 ));
+				}' &> /dev/null && (( onestat=5 ));
         fi
         
 
-        ###ETH
-        ###If ETH is 0 to 3.49%, send signal to set color green
-        if [ "$eth" -ge 0 ] && [ "$eth" -le 349 ] && [ "$ethstat" -ne 1 ]; then
+        ###TWO
+        ###If TWO is 0 to 3.49%, send signal to set color green
+        if [ "$two" -ge 0 ] && [ "$two" -le 349 ] && [ "$twostat" -ne 1 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-                "name": "ETH +",
+                "name": "TWO +",
                 "pid": "DK5QPID",
                 "zoneId": "20,4",
                 "effect": "SET_COLOR",
@@ -151,11 +151,11 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' &> /dev/null && (( ethstat=1 ));
-        ###If ETH is +3.5 to 7.99%, send signal to blink color green
-        elif [ "$eth" -ge 350 ] && [ "$eth" -le 799 ] && [ "$ethstat" -ne 2 ]; then
+				}' &> /dev/null && (( twostat=1 ));
+        ###If TWO is +3.5 to 7.99%, send signal to blink color green
+        elif [ "$two" -ge 350 ] && [ "$two" -le 799 ] && [ "$twostat" -ne 2 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-                "name": "ETH +",
+                "name": "TWO +",
                 "pid": "DK5QPID",
                 "zoneId": "20,4",
                 "color": "#00FF00",
@@ -164,11 +164,11 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' &> /dev/null && (( ethstat=2 ));
-        ###If ETH is >+8%, send signal to color cycle
-        elif [ "$eth" -ge 800 ] && [ "$ethstat" -ne 3 ]; then
+				}' &> /dev/null && (( twostat=2 ));
+        ###If TWO is >+8%, send signal to color cycle
+        elif [ "$two" -ge 800 ] && [ "$twostat" -ne 3 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-                "name": "ETH +",
+                "name": "TWO +",
                 "pid": "DK5QPID",
                 "zoneId": "20,4",
                 "color": "#00FF00",
@@ -177,11 +177,11 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' &> /dev/null && (( ethstat=3 ));
-        ###If ETH is <0 to -3.49%, send signal to set color red
-        elif [ "$eth" -lt 0 ] && [ "$eth" -ge -349 ] && [ "$ethstat" -ne 4 ]; then
+				}' &> /dev/null && (( twostat=3 ));
+        ###If TWO is <0 to -3.49%, send signal to set color red
+        elif [ "$two" -lt 0 ] && [ "$two" -ge -349 ] && [ "$twostat" -ne 4 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-                "name": "ETH -",
+                "name": "TWO -",
                 "pid": "DK5QPID",
                 "zoneId": "20,4",
                 "effect": "SET_COLOR",
@@ -190,11 +190,11 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' &> /dev/null && (( ethstat=4 ));
-        ###If ETH is <-3.5%, send signal to blink color red
-        elif [ "$eth" -le -350 ] && [ "$ethstat" -ne 5 ]; then
+				}' &> /dev/null && (( twostat=4 ));
+        ###If TWO is <-3.5%, send signal to blink color red
+        elif [ "$two" -le -350 ] && [ "$twostat" -ne 5 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-                "name": "ETH -",
+                "name": "TWO -",
                 "pid": "DK5QPID",
                 "zoneId": "20,4",
                 "color": "#FF0000",
@@ -203,15 +203,15 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' &> /dev/null && (( ethstat=5 ));
+				}' &> /dev/null && (( twostat=5 ));
         fi
         
 
-        ###LTC
-        ###If LTC is 0 to 3.49%, send signal to set color green
-        if [ "$ltc" -ge 0 ] && [ "$ltc" -le 349 ] && [ "$ltcstat" -ne 1 ]; then
+        ###THREE
+        ###If THREE is 0 to 3.49%, send signal to set color green
+        if [ "$three" -ge 0 ] && [ "$three" -le 349 ] && [ "$threestat" -ne 1 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-                "name": "LTC +",
+                "name": "THREE +",
                 "pid": "DK5QPID",
                 "zoneId": "21,4",
                 "effect": "SET_COLOR",
@@ -220,11 +220,11 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' &> /dev/null && (( ltcstat=1 ));
-        ###If LTC is +3.5 to 7.99%, send signal to blink color green
-        elif [ "$ltc" -ge 350 ] && [ "$ltc" -le 799 ] && [ "$ltcstat" -ne 2 ]; then
+				}' &> /dev/null && (( threestat=1 ));
+        ###If THREE is +3.5 to 7.99%, send signal to blink color green
+        elif [ "$three" -ge 350 ] && [ "$three" -le 799 ] && [ "$threestat" -ne 2 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-                "name": "LTC +",
+                "name": "THREE +",
                 "pid": "DK5QPID",
                 "zoneId": "21,4",
                 "color": "#00FF00",
@@ -233,11 +233,11 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' &> /dev/null && (( ltcstat=2 ));
-        ###If LTC is >+8%, send signal to color cycle
-        elif [ "$ltc" -ge 800 ] && [ "$ltcstat" -ne 3 ]; then
+				}' &> /dev/null && (( threestat=2 ));
+        ###If THREE is >+8%, send signal to color cycle
+        elif [ "$three" -ge 800 ] && [ "$threestat" -ne 3 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-                "name": "LTC +",
+                "name": "THREE +",
                 "pid": "DK5QPID",
                 "zoneId": "21,4",
                 "color": "#00FF00",
@@ -246,11 +246,11 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' &> /dev/null && (( ltcstat=3 ));
-        ###If LTC is <0 to -3.49%, send signal to set color red
-        elif [ "$ltc" -lt 0 ] && [ "$ltc" -ge -349 ] && [ "$ltcstat" -ne 4 ]; then
+				}' &> /dev/null && (( threestat=3 ));
+        ###If THREE is <0 to -3.49%, send signal to set color red
+        elif [ "$three" -lt 0 ] && [ "$three" -ge -349 ] && [ "$threestat" -ne 4 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-                "name": "LTC -",
+                "name": "THREE -",
                 "pid": "DK5QPID",
                 "zoneId": "21,4",
                 "effect": "SET_COLOR",
@@ -259,11 +259,11 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' &> /dev/null && (( ltcstat=4 ));
-        ###If LTC is <-3.5%, send signal to blink color red
-        elif [ "$ltc" -le -350 ] && [ "$ltcstat" -ne 5 ]; then
+				}' &> /dev/null && (( threestat=4 ));
+        ###If THREE is <-3.5%, send signal to blink color red
+        elif [ "$three" -le -350 ] && [ "$threestat" -ne 5 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-                "name": "LTC -",
+                "name": "THREE -",
                 "pid": "DK5QPID",
                 "zoneId": "21,4",
                 "color": "#FF0000",
@@ -272,15 +272,15 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' &> /dev/null && (( ltcstat=5 ));
+				}' &> /dev/null && (( threestat=5 ));
         fi
         
 
-        ##BCH
-        ###If BCH is 0 to 3.49%, send signal to set color green
-        if [ "$bch" -ge 0 ] && [ "$bch" -le 349 ] && [ "$bchstat" -ne 1 ]; then
+        ##FOUR
+        ###If FOUR is 0 to 3.49%, send signal to set color green
+        if [ "$four" -ge 0 ] && [ "$four" -le 349 ] && [ "$fourstat" -ne 1 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-                "name": "BCH +",
+                "name": "FOUR +",
                 "pid": "DK5QPID",
                 "zoneId": "19,3",
                 "effect": "SET_COLOR",
@@ -289,11 +289,11 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' &> /dev/null && (( bchstat=1 ));
-        ###If BCH is +3.5 to 7.99%, send signal to blink color green
-        elif [ "$bch" -ge 350 ] && [ "$bch" -le 799 ] && [ "$bchstat" -ne 2 ]; then
+				}' &> /dev/null && (( fourstat=1 ));
+        ###If FOUR is +3.5 to 7.99%, send signal to blink color green
+        elif [ "$four" -ge 350 ] && [ "$four" -le 799 ] && [ "$fourstat" -ne 2 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-                "name": "BCH +",
+                "name": "FOUR +",
                 "pid": "DK5QPID",
                 "zoneId": "19,3",
                 "color": "#00FF00",
@@ -302,11 +302,11 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' &> /dev/null && (( bchstat=2 ));
-        ###If BCH is >+8%, send signal to color cycle
-        elif [ "$bch" -ge 800 ] && [ "$bchstat" -ne 3 ]; then
+				}' &> /dev/null && (( fourstat=2 ));
+        ###If FOUR is >+8%, send signal to color cycle
+        elif [ "$four" -ge 800 ] && [ "$fourstat" -ne 3 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-                "name": "BCH +",
+                "name": "FOUR +",
                 "pid": "DK5QPID",
                 "zoneId": "19,3",
                 "color": "#00FF00",
@@ -315,11 +315,11 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' &> /dev/null && (( bchstat=3 ));
-        ###If BCH is <0 to -3.49%, send signal to set color red
-        elif [ "$bch" -lt 0 ] && [ "$bch" -ge -349 ] && [ "$bchstat" -ne 4 ]; then
+				}' &> /dev/null && (( fourstat=3 ));
+        ###If FOUR is <0 to -3.49%, send signal to set color red
+        elif [ "$four" -lt 0 ] && [ "$four" -ge -349 ] && [ "$fourstat" -ne 4 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-                "name": "BCH -",
+                "name": "FOUR -",
                 "pid": "DK5QPID",
                 "zoneId": "19,3",
                 "effect": "SET_COLOR",
@@ -328,11 +328,11 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' &> /dev/null && (( bchstat=4 ));
-        ###If BCH is <-3.5%, send signal to blink color red
-        elif [ "$bch" -le -350 ] && [ "$bchstat" -ne 5 ]; then
+				}' &> /dev/null && (( fourstat=4 ));
+        ###If FOUR is <-3.5%, send signal to blink color red
+        elif [ "$four" -le -350 ] && [ "$fourstat" -ne 5 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-                "name": "BCH -",
+                "name": "FOUR -",
                 "pid": "DK5QPID",
                 "zoneId": "19,3",
                 "color": "#FF0000",
@@ -341,15 +341,15 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' &> /dev/null && (( bchstat=5 ));
+				}' &> /dev/null && (( fourstat=5 ));
         fi
         
 
-        ###XRP
-        ###If XRP is 0 to 3.49%, send signal to set color green
-        if [ "$xrp" -ge 0 ] && [ "$xrp" -le 349 ] && [ "$xrpstat" -ne 1 ]; then
+        ###FIVE
+        ###If FIVE is 0 to 3.49%, send signal to set color green
+        if [ "$five" -ge 0 ] && [ "$five" -le 349 ] && [ "$fivestat" -ne 1 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-                "name": "XRP +",
+                "name": "FIVE +",
                 "pid": "DK5QPID",
                 "zoneId": "20,3",
                 "effect": "SET_COLOR",
@@ -358,11 +358,11 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' &> /dev/null && (( xrpstat=1 ));
-        ###If XRP is +3.5 to 7.99%, send signal to blink color green
-        elif [ "$xrp" -ge 350 ] && [ "$xrp" -le 799 ] && [ "$xrpstat" -ne 2 ]; then
+				}' &> /dev/null && (( fivestat=1 ));
+        ###If FIVE is +3.5 to 7.99%, send signal to blink color green
+        elif [ "$five" -ge 350 ] && [ "$five" -le 799 ] && [ "$fivestat" -ne 2 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-                "name": "XRP +",
+                "name": "FIVE +",
                 "pid": "DK5QPID",
                 "zoneId": "20,3",
                 "color": "#00FF00",
@@ -371,11 +371,11 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' &> /dev/null && (( xrpstat=2 ));
-        ###If XRP is >+8%, send signal to color cycle
-        elif [ "$xrp" -ge 800 ] && [ "$xrpstat" -ne 3 ]; then
+				}' &> /dev/null && (( fivestat=2 ));
+        ###If FIVE is >+8%, send signal to color cycle
+        elif [ "$five" -ge 800 ] && [ "$fivestat" -ne 3 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-                "name": "XRP +",
+                "name": "FIVE +",
                 "pid": "DK5QPID",
                 "zoneId": "20,3",
                 "color": "#00FF00",
@@ -384,11 +384,11 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' &> /dev/null && (( xrpstat=3 ));
-        ###If XRP is <0 to -3.49%, send signal to set color red
-        elif [ "$xrp" -lt 0 ] && [ "$xrp" -ge -349 ] && [ "$xrpstat" -ne 4 ]; then
+				}' &> /dev/null && (( fivestat=3 ));
+        ###If FIVE is <0 to -3.49%, send signal to set color red
+        elif [ "$five" -lt 0 ] && [ "$five" -ge -349 ] && [ "$fivestat" -ne 4 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-                "name": "XRP -",
+                "name": "FIVE -",
                 "pid": "DK5QPID",
                 "zoneId": "20,3",
                 "effect": "SET_COLOR",
@@ -397,11 +397,11 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' &> /dev/null && (( xrpstat=4 ));
-        ###If XRP is <-3.5%, send signal to blink color red
-        elif [ "$xrp" -le -350 ] && [ "$xrpstat" -ne 5 ]; then
+				}' &> /dev/null && (( fivestat=4 ));
+        ###If FIVE is <-3.5%, send signal to blink color red
+        elif [ "$five" -le -350 ] && [ "$fivestat" -ne 5 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-                "name": "XRP -",
+                "name": "FIVE -",
                 "pid": "DK5QPID",
                 "zoneId": "20,3",
                 "color": "#FF0000",
@@ -410,15 +410,15 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' &> /dev/null && (( xrpstat=5 ));
+				}' &> /dev/null && (( fivestat=5 ));
         fi
         
 
-        ###XMR
-        ###If XMR is 0 to 3.49%, send signal to set color green
-        if [ "$xmr" -ge 0 ] && [ "$xmr" -le 349 ] && [ "$xmrstat" -ne 1 ]; then
+        ###EIGHT
+        ###If EIGHT is 0 to 3.49%, send signal to set color green
+        if [ "$six" -ge 0 ] && [ "$six" -le 349 ] && [ "$sixstat" -ne 1 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-                "name": "XMR +",
+                "name": "EIGHT +",
                 "pid": "DK5QPID",
                 "zoneId": "21,3",
                 "effect": "SET_COLOR",
@@ -427,11 +427,11 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' &> /dev/null && (( xmrstat=1 ));
-        ###If XMR is +3.5 to 7.99%, send signal to blink color green
-        elif [ "$xmr" -ge 350 ] && [ "$xmr" -le 799 ] && [ "$xmrstat" -ne 2 ]; then
+				}' &> /dev/null && (( sixstat=1 ));
+        ###If EIGHT is +3.5 to 7.99%, send signal to blink color green
+        elif [ "$six" -ge 350 ] && [ "$six" -le 799 ] && [ "$sixstat" -ne 2 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-                "name": "XMR +",
+                "name": "EIGHT +",
                 "pid": "DK5QPID",
                 "zoneId": "21,3",
                 "color": "#00FF00",
@@ -440,11 +440,11 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' &> /dev/null && (( xmrstat=2 ));
-        ###If XMR is >+8%, send signal to color cycle
-        elif [ "$xmr" -ge 800 ] && [ "$xmrstat" -ne 3 ]; then
+				}' &> /dev/null && (( sixstat=2 ));
+        ###If EIGHT is >+8%, send signal to color cycle
+        elif [ "$six" -ge 800 ] && [ "$sixstat" -ne 3 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-                "name": "XMR +",
+                "name": "EIGHT +",
                 "pid": "DK5QPID",
                 "zoneId": "21,3",
                 "color": "#00FF00",
@@ -453,11 +453,11 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' &> /dev/null && (( xmrstat=3 ));
-        ###If XMR is <0 to -3.49%, send signal to set color red
-        elif [ "$xmr" -lt 0 ] && [ "$xmr" -ge -349 ] && [ "$xmrstat" -ne 4 ]; then
+				}' &> /dev/null && (( sixstat=3 ));
+        ###If EIGHT is <0 to -3.49%, send signal to set color red
+        elif [ "$six" -lt 0 ] && [ "$six" -ge -349 ] && [ "$sixstat" -ne 4 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-                "name": "XMR -",
+                "name": "EIGHT -",
                 "pid": "DK5QPID",
                 "zoneId": "21,3",
                 "effect": "SET_COLOR",
@@ -466,11 +466,11 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' &> /dev/null && (( xmrstat=4 ));
-        ###If XMR is <-3.5%, send signal to blink color red
-        elif [ "$xmr" -le -350 ] && [ "$xmrstat" -ne 5 ]; then
+				}' &> /dev/null && (( sixstat=4 ));
+        ###If EIGHT is <-3.5%, send signal to blink color red
+        elif [ "$six" -le -350 ] && [ "$sixstat" -ne 5 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-                "name": "XMR -",
+                "name": "EIGHT -",
                 "pid": "DK5QPID",
                 "zoneId": "21,3",
                 "color": "#FF0000",
@@ -479,15 +479,15 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' &> /dev/null && (( xmrstat=5 ));
+				}' &> /dev/null && (( sixstat=5 ));
         fi
         
 
-        ###LOKI
-        ###If LOKI is 0 to 3.49%, send signal to set color green
-        if [ "$loki" -ge 0 ] && [ "$loki" -le 349 ] && [ "$lokistat" -ne 1 ]; then
+        ###SEVEN
+        ###If SEVEN is 0 to 3.49%, send signal to set color green
+        if [ "$seven" -ge 0 ] && [ "$seven" -le 349 ] && [ "$sevenstat" -ne 1 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-                "name": "LOKI +",
+                "name": "SEVEN +",
                 "pid": "DK5QPID",
                 "zoneId": "19,2",
                 "effect": "SET_COLOR",
@@ -496,11 +496,11 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' &> /dev/null && (( lokistat=1 ));
-        ###If LOKI is +3.5 to 7.99%, send signal to blink color green
-        elif [ "$loki" -ge 350 ] && [ "$loki" -le 799 ] && [ "$lokistat" -ne 2 ]; then
+				}' &> /dev/null && (( sevenstat=1 ));
+        ###If SEVEN is +3.5 to 7.99%, send signal to blink color green
+        elif [ "$seven" -ge 350 ] && [ "$seven" -le 799 ] && [ "$sevenstat" -ne 2 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-                "name": "LOKI +",
+                "name": "SEVEN +",
                 "pid": "DK5QPID",
                 "zoneId": "19,2",
                 "color": "#00FF00",
@@ -509,11 +509,11 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' &> /dev/null && (( lokistat=2 ));
-        ###If LOKI is >+8%, send signal to color cycle
-        elif [ "$loki" -ge 800 ] && [ "$lokistat" -ne 3 ]; then
+				}' &> /dev/null && (( sevenstat=2 ));
+        ###If SEVEN is >+8%, send signal to color cycle
+        elif [ "$seven" -ge 800 ] && [ "$sevenstat" -ne 3 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-                "name": "LOKI +",
+                "name": "SEVEN +",
                 "pid": "DK5QPID",
                 "zoneId": "19,2",
                 "color": "#00FF00",
@@ -522,11 +522,11 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' &> /dev/null && (( lokistat=3 ));
-        ###If LOKI is <0 to -3.49%, send signal to set color red
-        elif [ "$loki" -lt 0 ] && [ "$loki" -ge -349 ] && [ "$lokistat" -ne 4 ]; then
+				}' &> /dev/null && (( sevenstat=3 ));
+        ###If SEVEN is <0 to -3.49%, send signal to set color red
+        elif [ "$seven" -lt 0 ] && [ "$seven" -ge -349 ] && [ "$sevenstat" -ne 4 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-                "name": "LOKI -",
+                "name": "SEVEN -",
                 "pid": "DK5QPID",
                 "zoneId": "19,2",
                 "effect": "SET_COLOR",
@@ -535,11 +535,11 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' &> /dev/null && (( lokistat=4 ));
-        ###If LOKI is <-3.5%, send signal to blink color red
-        elif [ "$loki" -le -350 ] && [ "$lokistat" -ne 5 ]; then
+				}' &> /dev/null && (( sevenstat=4 ));
+        ###If SEVEN is <-3.5%, send signal to blink color red
+        elif [ "$seven" -le -350 ] && [ "$sevenstat" -ne 5 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-                "name": "LOKI -",
+                "name": "SEVEN -",
                 "pid": "DK5QPID",
                 "zoneId": "19,2",
                 "color": "#FF0000",
@@ -548,15 +548,15 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' &> /dev/null && (( lokistat=5 ));
+				}' &> /dev/null && (( sevenstat=5 ));
         fi
         
 
-        ###XLM
-        ###If XLM is 0 to 3.49%, send signal to set color green
-        if [ "$xlm" -ge 0 ] && [ "$xlm" -le 349 ] && [ "$xlmstat" -ne 1 ]; then
+        ###SIX
+        ###If SIX is 0 to 3.49%, send signal to set color green
+        if [ "$eight" -ge 0 ] && [ "$eight" -le 349 ] && [ "$eightstat" -ne 1 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-                "name": "XLM +",
+                "name": "SIX +",
                 "pid": "DK5QPID",
                 "zoneId": "20,2",
                 "effect": "SET_COLOR",
@@ -565,11 +565,11 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' &> /dev/null && (( xlmstat=1 ));
-        ###If XLM is +3.5 to 7.99%, send signal to blink color green
-        elif [ "$xlm" -ge 350 ] && [ "$xlm" -le 799 ] && [ "$xlmstat" -ne 2 ]; then
+				}' &> /dev/null && (( eightstat=1 ));
+        ###If SIX is +3.5 to 7.99%, send signal to blink color green
+        elif [ "$eight" -ge 350 ] && [ "$eight" -le 799 ] && [ "$eightstat" -ne 2 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-                "name": "XLM +",
+                "name": "SIX +",
                 "pid": "DK5QPID",
                 "zoneId": "20,2",
                 "color": "#00FF00",
@@ -578,11 +578,11 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' &> /dev/null && (( xlmstat=2 ));
-        ###If XLM is >+8%, send signal to color cycle
-        elif [ "$xlm" -ge 800 ] && [ "$xlmstat" -ne 3 ]; then
+				}' &> /dev/null && (( eightstat=2 ));
+        ###If SIX is >+8%, send signal to color cycle
+        elif [ "$eight" -ge 800 ] && [ "$eightstat" -ne 3 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-                "name": "XLM +",
+                "name": "SIX +",
                 "pid": "DK5QPID",
                 "zoneId": "20,2",
                 "color": "#00FF00",
@@ -591,11 +591,11 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' &> /dev/null && (( xlmstat=3 ));
-        ###If XLM is <0 to -3.49%, send signal to set color red
-        elif [ "$xlm" -lt 0 ] && [ "$xlm" -ge -349 ] && [ "$xlmstat" -ne 4 ]; then
+				}' &> /dev/null && (( eightstat=3 ));
+        ###If SIX is <0 to -3.49%, send signal to set color red
+        elif [ "$eight" -lt 0 ] && [ "$eight" -ge -349 ] && [ "$eightstat" -ne 4 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-                "name": "XLM -",
+                "name": "SIX -",
                 "pid": "DK5QPID",
                 "zoneId": "20,2",
                 "effect": "SET_COLOR",
@@ -604,11 +604,11 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' &> /dev/null && (( xlmstat=4 ));
-        ###If XLM is <-3.5%, send signal to blink color red
-        elif [ "$xlm" -le -350 ] && [ "$xlmstat" -ne 5 ]; then
+				}' &> /dev/null && (( eightstat=4 ));
+        ###If SIX is <-3.5%, send signal to blink color red
+        elif [ "$eight" -le -350 ] && [ "$eightstat" -ne 5 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-                "name": "XLM -",
+                "name": "SIX -",
                 "pid": "DK5QPID",
                 "zoneId": "20,2",
                 "color": "#FF0000",
@@ -617,15 +617,15 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' &> /dev/null && (( xlmstat=5 ));
+				}' &> /dev/null && (( eightstat=5 ));
         fi
         
 
-        ###BURST
-        ###If BURST is 0 to 3.49%, send signal to set color green
-        if [ "$burst" -ge 0 ] && [ "$burst" -le 349 ] && [ "$burststat" -ne 1 ]; then
+        ###NINE
+        ###If NINE is 0 to 3.49%, send signal to set color green
+        if [ "$nine" -ge 0 ] && [ "$nine" -le 349 ] && [ "$ninestat" -ne 1 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-                "name": "BURST +",
+                "name": "NINE +",
                 "pid": "DK5QPID",
                 "zoneId": "21,2",
                 "effect": "SET_COLOR",
@@ -634,11 +634,11 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' &> /dev/null && (( burststat=1 ));
-        ###If BURST is +3.5 to 7.99%, send signal to blink color green
-        elif [ "$burst" -ge 350 ] && [ "$burst" -le 799 ] && [ "$burststat" -ne 2 ]; then
+				}' &> /dev/null && (( ninestat=1 ));
+        ###If NINE is +3.5 to 7.99%, send signal to blink color green
+        elif [ "$nine" -ge 350 ] && [ "$nine" -le 799 ] && [ "$ninestat" -ne 2 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-                "name": "BURST +",
+                "name": "NINE +",
                 "pid": "DK5QPID",
                 "zoneId": "21,2",
                 "color": "#00FF00",
@@ -647,11 +647,11 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' &> /dev/null && (( burststat=2 ));
-        ###If BURST is >+8%, send signal to color cycle
-        elif [ "$burst" -ge 800 ] && [ "$burststat" -ne 3 ]; then
+				}' &> /dev/null && (( ninestat=2 ));
+        ###If NINE is >+8%, send signal to color cycle
+        elif [ "$nine" -ge 800 ] && [ "$ninestat" -ne 3 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-                "name": "BURST +",
+                "name": "NINE +",
                 "pid": "DK5QPID",
                 "zoneId": "21,2",
                 "color": "#00FF00",
@@ -660,11 +660,11 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' &> /dev/null && (( burststat=3 ));
-        ###If BURST is <0 to -3.49%, send signal to set color red
-        elif [ "$burst" -lt 0 ] && [ "$burst" -ge -349 ] && [ "$burststat" -ne 4 ]; then
+				}' &> /dev/null && (( ninestat=3 ));
+        ###If NINE is <0 to -3.49%, send signal to set color red
+        elif [ "$nine" -lt 0 ] && [ "$nine" -ge -349 ] && [ "$ninestat" -ne 4 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-                "name": "BURST -",
+                "name": "NINE -",
                 "pid": "DK5QPID",
                 "zoneId": "21,2",
                 "effect": "SET_COLOR",
@@ -673,11 +673,11 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' &> /dev/null && (( burststat=4 ));
-        ###If BURST is <-3.5%, send signal to blink color red
-        elif [ "$burst" -le -350 ] && [ "$burststat" -ne 5 ]; then
+				}' &> /dev/null && (( ninestat=4 ));
+        ###If NINE is <-3.5%, send signal to blink color red
+        elif [ "$nine" -le -350 ] && [ "$ninestat" -ne 5 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-                "name": "BURST -",
+                "name": "NINE -",
                 "pid": "DK5QPID",
                 "zoneId": "21,2",
                 "color": "#FF0000",
@@ -686,7 +686,7 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' &> /dev/null && (( burststat=5 ));
+				}' &> /dev/null && (( ninestat=5 ));
         fi
 
 ##Waits 10 seconds before looping and starting over
