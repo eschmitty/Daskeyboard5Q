@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ############################################################################################
-############################################################################################
+ZZ############################################################################################
 ##                                                                                        ##
 ## This script changes the colors of the numpad keys according to the 24 hour change      ##
 ## price of various cryptocurrencies. The price change is pulled from coinmarketcap.com's ##
@@ -19,7 +19,7 @@
 ##                          4 key = BitcoinCash                                           ##
 ##                          5 key = Ripple                                                ##
 ##                          6 key = Monero                                                ##
-##                          7 key = Cardano                                               ##
+##                          7 key = LOKI                                                  ##
 ##                          8 key = Stellar Lumens                                        ##
 ##                          9 key = Burst                                                 ##
 ##                                                                                        ##
@@ -33,7 +33,7 @@ ltcstat=0
 bchstat=0
 xrpstat=0
 xlmstat=0
-adastat=0
+lokistat=0
 xmrstat=0
 burststat=0
 
@@ -53,7 +53,7 @@ do
 		BCH=1831
 		XRP=52
 		XLM=512
-		ADA=2010
+		LOKI=2748
 		XMR=328
 		BURST=573
 		
@@ -63,7 +63,7 @@ do
         bch=$(curl -s -X GET "https://api.coinmarketcap.com/v2/ticker/$BCH/?structure=array" | grep change_24h | cut -d: -f2 | sed -e 's/ //g' -e 's/,//' | bc -l | xargs printf "%.2f" | sed 's/\.//')
         xrp=$(curl -s -X GET "https://api.coinmarketcap.com/v2/ticker/$XRP/?structure=array" | grep change_24h | cut -d: -f2 | sed -e 's/ //g' -e 's/,//' | bc -l | xargs printf "%.2f" | sed 's/\.//')
         xlm=$(curl -s -X GET "https://api.coinmarketcap.com/v2/ticker/$XLM/?structure=array" | grep change_24h | cut -d: -f2 | sed -e 's/ //g' -e 's/,//' | bc -l | xargs printf "%.2f" | sed 's/\.//')
-        ada=$(curl -s -X GET "https://api.coinmarketcap.com/v2/ticker/$ADA/?structure=array" | grep change_24h | cut -d: -f2 | sed -e 's/ //g' -e 's/,//' | bc -l | xargs printf "%.2f" | sed 's/\.//')
+        loki=$(curl -s -X GET "https://api.coinmarketcap.com/v2/ticker/$ADA/?structure=array" | grep change_24h | cut -d: -f2 | sed -e 's/ //g' -e 's/,//' | bc -l | xargs printf "%.2f" | sed 's/\.//')
         xmr=$(curl -s -X GET "https://api.coinmarketcap.com/v2/ticker/$XMR/?structure=array" | grep change_24h | cut -d: -f2 | sed -e 's/ //g' -e 's/,//' | bc -l | xargs printf "%.2f" | sed 's/\.//')
         burst=$(curl -s -X GET "https://api.coinmarketcap.com/v2/ticker/$BURST/?structure=array" | grep change_24h | cut -d: -f2 | sed -e 's/ //g' -e 's/,//' | bc -l | xargs printf "%.2f" | sed 's/\.//')
 
@@ -483,11 +483,11 @@ do
         fi
         
 
-        ###ADA
-        ###If ADA is 0 to 3.49%, send signal to set color green
-        if [ "$ada" -ge 0 ] && [ "$ada" -le 349 ] && [ "$adastat" -ne 1 ]; then
+        ###LOKI
+        ###If LOKI is 0 to 3.49%, send signal to set color green
+        if [ "$loki" -ge 0 ] && [ "$loki" -le 349 ] && [ "$lokistat" -ne 1 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-                "name": "ADA +",
+                "name": "LOKI +",
                 "pid": "DK5QPID",
                 "zoneId": "19,2",
                 "effect": "SET_COLOR",
@@ -496,11 +496,11 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' &> /dev/null && (( adastat=1 ));
-        ###If ADA is +3.5 to 7.99%, send signal to blink color green
-        elif [ "$ada" -ge 350 ] && [ "$ada" -le 799 ] && [ "$adastat" -ne 2 ]; then
+				}' &> /dev/null && (( lokistat=1 ));
+        ###If LOKI is +3.5 to 7.99%, send signal to blink color green
+        elif [ "$loki" -ge 350 ] && [ "$loki" -le 799 ] && [ "$lokistat" -ne 2 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-                "name": "ADA +",
+                "name": "LOKI +",
                 "pid": "DK5QPID",
                 "zoneId": "19,2",
                 "color": "#00FF00",
@@ -509,11 +509,11 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' &> /dev/null && (( adastat=2 ));
-        ###If ADA is >+8%, send signal to color cycle
-        elif [ "$ada" -ge 800 ] && [ "$adastat" -ne 3 ]; then
+				}' &> /dev/null && (( lokistat=2 ));
+        ###If LOKI is >+8%, send signal to color cycle
+        elif [ "$loki" -ge 800 ] && [ "$lokistat" -ne 3 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-                "name": "ADA +",
+                "name": "LOKI +",
                 "pid": "DK5QPID",
                 "zoneId": "19,2",
                 "color": "#00FF00",
@@ -522,11 +522,11 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' &> /dev/null && (( adastat=3 ));
-        ###If ADA is <0 to -3.49%, send signal to set color red
-        elif [ "$ada" -lt 0 ] && [ "$ada" -ge -349 ] && [ "$adastat" -ne 4 ]; then
+				}' &> /dev/null && (( lokistat=3 ));
+        ###If LOKI is <0 to -3.49%, send signal to set color red
+        elif [ "$loki" -lt 0 ] && [ "$loki" -ge -349 ] && [ "$lokistat" -ne 4 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-                "name": "ADA -",
+                "name": "LOKI -",
                 "pid": "DK5QPID",
                 "zoneId": "19,2",
                 "effect": "SET_COLOR",
@@ -535,11 +535,11 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' &> /dev/null && (( adastat=4 ));
-        ###If ADA is <-3.5%, send signal to blink color red
-        elif [ "$ada" -le -350 ] && [ "$adastat" -ne 5 ]; then
+				}' &> /dev/null && (( lokistat=4 ));
+        ###If LOKI is <-3.5%, send signal to blink color red
+        elif [ "$loki" -le -350 ] && [ "$lokistat" -ne 5 ]; then
         curl -X POST $URL --header 'Content-Type: application/json' --header 'Accept: application/json' -d '{
-                "name": "ADA -",
+                "name": "LOKI -",
                 "pid": "DK5QPID",
                 "zoneId": "19,2",
                 "color": "#FF0000",
@@ -548,7 +548,7 @@ do
                 "isArchived": false,
                 "isRead": true,
                 "isMuted": true
-				}' &> /dev/null && (( adastat=5 ));
+				}' &> /dev/null && (( lokistat=5 ));
         fi
         
 
